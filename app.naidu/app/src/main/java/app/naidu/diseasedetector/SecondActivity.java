@@ -35,8 +35,8 @@ public class SecondActivity extends AppCompatActivity {
     ImageView imageView;
     TextView result, confidence;
 
-    int h = 333;
-    int w = 500;
+    int h = 320;
+    int w = 240;
 
 
 
@@ -114,8 +114,7 @@ public class SecondActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Anthracnose","Bacterial Canker", "Cutting Weevil", "Die Back", "Gall Midge", "Healthy", "Powdery Mildew", "Sooty Mould", "Apoderus Javanicus", "Aulacaspis Tubercularis", "Ceroplastes Rubens", "Cisaberoptus Kenyae", "Dappula Tertia", "Dialeuropora Decempuncta", "Erosomyia sp", "Icerya Seychellarum", "Ischnaspis Longirostris", "Mictis Longicornis", "Neomelicharia Sparsa", "Orthaga Euadrusalis", "Procontarinia Matteiana", "Procontarinia Rubus", "Valanga Nigricornis"};
-
+            String[] classes = {"Anthracnose","Bacterial Canker", "Cutting Weevil", "Die Back", "Gall Midge", "Healthy", "Powdery Mildew", "Sooty Mould"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
