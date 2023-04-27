@@ -92,9 +92,9 @@ public class SecondActivity extends AppCompatActivity {
             for(int i = 0; i < h; i ++){
                 for(int j = 0; j < w; j++){
                     int val = intValues[pixel++]; // RGB
-                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f));
-                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f));
-                    byteBuffer.putFloat((val & 0xFF) * (1.f));
+                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f/255.f));
+                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f/255.f));
+                    byteBuffer.putFloat((val & 0xFF) * (1.f/255.f));
                 }
             }
 
