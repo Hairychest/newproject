@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import app.naidu.diseasedetector.ml.Model1;
+import app.naidu.diseasedetector.ml.Model;
 import app.naidu.diseasedetector.R;
 
 
@@ -78,7 +78,7 @@ public class SecondActivity extends AppCompatActivity {
 
     public void classifyImage(Bitmap image){
         try {
-            Model1 model = Model1.newInstance(getApplicationContext());
+            Model model = Model.newInstance(getApplicationContext());
 
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, h, w, 3},DataType.FLOAT32);
@@ -92,8 +92,8 @@ public class SecondActivity extends AppCompatActivity {
             for(int i = 0; i < h; i ++){
                 for(int j = 0; j < w; j++){
                     int val = intValues[pixel++]; // RGB
-                    byteBuffer.putFloat(((val >> 16) & 0xFF) * (1.f/1.f));
-                    byteBuffer.putFloat(((val >> 8) & 0xFF) * (1.f/1.f));
+                    byteBuffer.putFloat(((val >> 16) & 0xFF));
+                    byteBuffer.putFloat(((val >> 8) & 0xFF) );
                     byteBuffer.putFloat((val & 0xFF) * (1.f/1.f));
                 }
             }
@@ -101,7 +101,7 @@ public class SecondActivity extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            Model1.Outputs outputs = model.process(inputFeature0);
+            Model.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
@@ -114,7 +114,7 @@ public class SecondActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Brown Spot","Healthy Leaf","Invalid","Leaf Blast"};
+            String[] classes = {"Browon Spot","Healthy Leaf","Invalid","Leaf Blast"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
