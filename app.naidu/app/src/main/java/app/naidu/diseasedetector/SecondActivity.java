@@ -33,7 +33,7 @@ public class SecondActivity extends AppCompatActivity {
     private Button button;
     Button camera, gallery;
     ImageView imageView;
-    TextView result, confidence;
+    TextView result, confidence,confidencesText;
 
     int h = 512;
     int w = 512;
@@ -54,6 +54,7 @@ public class SecondActivity extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
+        confidencesText = findViewById(R.id.confidencesText);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,13 +115,17 @@ public class SecondActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Browon Spot","Healthy Leaf","Invalid","Leaf Blast"};
+            String[] classes = {"Brown Spot","Healthy Leaf","Invalid","Leaf Blast"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-
+            if (classes[maxPos] =="Invalid"){
+                s = "Upload Different Image";
+                result.setText(String.format("%s\n", classes[maxPos]));
+                confidencesText.setText("Error:");
+            }
             confidence.setText(s);
 
             // Releases model resources if no longer used.
