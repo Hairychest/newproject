@@ -95,7 +95,7 @@ public class SecondActivity extends AppCompatActivity {
                     int val = intValues[pixel++]; // RGB
                     byteBuffer.putFloat(((val >> 16) & 0xFF));
                     byteBuffer.putFloat(((val >> 8) & 0xFF) );
-                    byteBuffer.putFloat((val & 0xFF) * (1.f/1.f));
+                    byteBuffer.putFloat((val & 0xFF));
                 }
             }
 
@@ -115,7 +115,7 @@ public class SecondActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Brown Spot","Healthy Leaf","Invalid","Leaf Blast"};
+            String[] classes = {"Brown Spot","Healthy","Invalid","Leaf Blast"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
@@ -130,6 +130,7 @@ public class SecondActivity extends AppCompatActivity {
 
             // Releases model resources if no longer used.
             model.close();
+            confidencesText.setText("Percentage:");
         } catch (IOException e) {
             // TODO Handle the exception
         }
