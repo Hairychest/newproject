@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
     tools:context=".SecondActivity">
 
     <Button
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/button2"
         android:layout_centerInParent="true"
-        android:backgroundTint="@color/purple_500"
-        android:text="Take Image"
+        android:backgroundTint="@color/green"
+        android:text="Camera"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="21sp"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green"
         android:text="Upload Image"
         android:textAlignment="center"
         android:textAllCaps="false"

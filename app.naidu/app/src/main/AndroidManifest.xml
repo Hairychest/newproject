@@ -13,6 +13,7 @@
         android:theme="@style/Theme.MLWithTensorFlowLite">
         <activity
             android:name=".SecondActivity"
+            android:label="Rice Disease Detector"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -20,13 +21,16 @@
         </activity>
         <activity
             android:name=".ThirdActivity"
+            android:label="Wheat Disease Detector"
             android:exported="false">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".FourthActivity"
+            android:label="Potato Disease Detector"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,6 +38,7 @@
         </activity>
         <activity
             android:name=".FifthActivity"
+            android:label="Tomato Disease Detector"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -41,6 +46,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:label="Menu"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
