@@ -15,23 +15,49 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton button;
+    private Button rice,tomato,wheat,potato;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.imageButton);
+        rice = findViewById(R.id.rice);
+        tomato = findViewById(R.id.tomato);
+        wheat = findViewById(R.id.wheat);
+        potato = findViewById(R.id.potato);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        rice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSecondActivity();
+            }
+        });
+
+
+        wheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openThirdActivity();
+            }
+        });
+
+        potato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFourthActivity();
+            }
+        });
+
+
+        tomato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFifthActivity();
             }
         });
 
@@ -42,5 +68,23 @@ public class MainActivity extends AppCompatActivity {
        Intent i = new Intent(MainActivity.this,SecondActivity.class);
        startActivity(i);
     }
+
+
+    public void openThirdActivity(){
+        Intent i = new Intent(MainActivity.this,ThirdActivity.class);
+        startActivity(i);
+    }
+
+
+public void openFourthActivity(){
+        Intent i = new Intent(MainActivity.this,FourthActivity.class);
+        startActivity(i);
+        }
+
+
+public void openFifthActivity(){
+        Intent i = new Intent(MainActivity.this,FifthActivity.class);
+        startActivity(i);
+        }
 
         }
