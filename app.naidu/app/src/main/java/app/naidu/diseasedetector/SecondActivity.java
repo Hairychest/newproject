@@ -15,6 +15,10 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -31,9 +35,10 @@ import app.naidu.diseasedetector.R;
 
 public class SecondActivity extends AppCompatActivity {
     private Button button;
-    Button camera, gallery;
+    Button camera, gallery,explore;
     ImageView imageView;
     TextView result, confidence,confidencesText;
+//    LinearLayout align1;
 
     int h = 512;
     int w = 512;
@@ -47,31 +52,37 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
 
-
+        explore = findViewById(R.id.e1);
         camera = findViewById(R.id.button);
         gallery = findViewById(R.id.button2);
-
+//        align1 = findViewById(R.id.align1);
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         imageView = findViewById(R.id.imageView);
         confidencesText = findViewById(R.id.confidencesText);
 
+
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                explore.setVisibility(View.INVISIBLE);
                 if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                     Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(cameraIntent, 3);
                 } else {
                     requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
                 }
+
             }
         });
+
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                explore.setVisibility(View.INVISIBLE);
                 Intent cameraIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(cameraIntent, 1);
+
             }
         });
     }
@@ -128,9 +139,29 @@ public class SecondActivity extends AppCompatActivity {
             }
             confidence.setText(s);
 
+
+
             // Releases model resources if no longer used.
             model.close();
-            confidencesText.setText("Percentage:");
+//            align1.setVisibility(View.INVISIBLE);
+            explore.setVisibility(View.VISIBLE);
+            explore.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    RelativeLayout d1 = (RelativeLayout)  findViewById(R.id.d1);
+
+
+
+                    d1.setVisibility(v.INVISIBLE);
+
+                    WebView myWebView = (WebView) findViewById(R.id.webview);
+                    myWebView.loadUrl("https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_cereals_paddy.html");
+                    RelativeLayout d2 = (RelativeLayout) findViewById(R.id.d2);
+                    d2.setVisibility(v.VISIBLE);
+                    myWebView.setVisibility(v.VISIBLE);
+                }
+            });
+
+
         } catch (IOException e) {
             // TODO Handle the exception
         }
