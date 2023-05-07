@@ -35,8 +35,8 @@ public class FifthActivity extends AppCompatActivity {
     ImageView imageView;
     TextView result, confidence,confidencesText;
 
-    int h = 512;
-    int w = 512;
+    int h = 256;
+    int w = 256;
 
 
 
@@ -115,7 +115,7 @@ public class FifthActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Brown Spot","Healthy","Invalid","Leaf Blast"};
+            String[] classes ={"Early Blight", "Healthy", "Invalid", "Late Blight", "Other Disease", "ToLCV"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
