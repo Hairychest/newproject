@@ -40,8 +40,8 @@ public class ThirdActivity extends AppCompatActivity {
     ImageView imageView;
     TextView result, confidence,confidencesText;
 
-    int h = 512;
-    int w = 512;
+    int h = 256;
+    int w = 256;
 
 
 
@@ -121,17 +121,13 @@ public class ThirdActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = {"Brown Spot","Healthy","Invalid","Leaf Blast"};
+            String[] classes = { "Brown_Rust", "Fusarium_Head_Blight", "Healthy", "Loose_Smut", "Powdery_Mildew","Yellow_Rust"};
             result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
             }
-            if (classes[maxPos] =="Invalid"){
-                s = "Upload Different Image";
-                result.setText(String.format("%s\n", classes[maxPos]));
-                confidencesText.setText("Error:");
-            }
+
             confidence.setText(s);
 
             // Releases model resources if no longer used.
