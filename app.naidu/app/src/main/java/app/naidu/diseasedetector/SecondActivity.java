@@ -13,10 +13,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.webkit.WebSettings;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -154,7 +158,23 @@ public class SecondActivity extends AppCompatActivity {
                     d1.setVisibility(v.INVISIBLE);
 
                     WebView myWebView = (WebView) findViewById(R.id.webview);
+                    myWebView.getSettings().setJavaScriptEnabled(true); // enable JavaScript if needed
+                    myWebView.getSettings().setLoadWithOverviewMode(true); // enable mobile view
+                    myWebView.getSettings().setUseWideViewPort(true);
+                    myWebView.getSettings().setBuiltInZoomControls(true);
+                    myWebView.getSettings().setDisplayZoomControls(true);
+                    myWebView.getSettings().setSupportZoom(true);
+                    myWebView.getSettings().setUseWideViewPort(true);
+                    myWebView.getSettings().setLoadWithOverviewMode(true);
                     myWebView.loadUrl("https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_cereals_paddy.html");
+                    myWebView.setWebViewClient(new WebViewClient() {
+                        @Override
+                        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                            view.loadUrl(request.getUrl().toString());
+                            return true;
+                        }
+                    });
+
                     RelativeLayout d2 = (RelativeLayout) findViewById(R.id.d2);
                     d2.setVisibility(v.VISIBLE);
                     myWebView.setVisibility(v.VISIBLE);

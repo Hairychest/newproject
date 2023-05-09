@@ -20,6 +20,7 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
+
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="370sp"

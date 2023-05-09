@@ -13,8 +13,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.webkit.WebResourceRequest;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -30,7 +34,7 @@ import app.naidu.diseasedetector.R;
 
 public class FourthActivity extends AppCompatActivity {
     private Button button;
-    Button camera, gallery;
+    Button camera, gallery,explore;
     ImageView imageView;
     TextView result, confidence,confidencesText;
 
@@ -47,13 +51,14 @@ public class FourthActivity extends AppCompatActivity {
 
 
 
+        explore = findViewById(R.id.e4);
         camera = findViewById(R.id.button41);
         gallery = findViewById(R.id.button42);
-
-        result = findViewById(R.id.result41);
-        confidence = findViewById(R.id.confidence41);
-        imageView = findViewById(R.id.imageView41);
-        confidencesText = findViewById(R.id.confidencesText41);
+//        align1 = findViewById(R.id.align1);
+        result = findViewById(R.id.result4);
+        confidence = findViewById(R.id.confidence4);
+        imageView = findViewById(R.id.imageView4);
+        confidencesText = findViewById(R.id.confidencesText4);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +135,37 @@ public class FourthActivity extends AppCompatActivity {
             // Releases model resources if no longer used.
             model.close();
             confidencesText.setText("Percentage:");
+            explore.setVisibility(View.VISIBLE);
+            explore.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    RelativeLayout d1 = (RelativeLayout)  findViewById(R.id.d41);
+
+
+
+                    d1.setVisibility(v.INVISIBLE);
+
+                    WebView myWebView = (WebView) findViewById(R.id.webview4);
+                    myWebView.getSettings().setJavaScriptEnabled(true); // enable JavaScript if needed
+                    myWebView.getSettings().setLoadWithOverviewMode(true); // enable mobile view
+                    myWebView.getSettings().setUseWideViewPort(true);
+                    myWebView.getSettings().setBuiltInZoomControls(true);
+                    myWebView.getSettings().setDisplayZoomControls(true);
+                    myWebView.getSettings().setSupportZoom(true);
+                    myWebView.getSettings().setUseWideViewPort(true);
+                    myWebView.getSettings().setLoadWithOverviewMode(true);
+                    myWebView.loadUrl("https://agritech.tnau.ac.in/crop_protection/crop_prot_crop%20diseases_veg_potato.html");
+                    myWebView.setWebViewClient(new WebViewClient() {
+                        @Override
+                        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                            view.loadUrl(request.getUrl().toString());
+                            return true;
+                        }
+                    });
+                    RelativeLayout d2 = (RelativeLayout) findViewById(R.id.d42);
+                    d2.setVisibility(v.VISIBLE);
+                    myWebView.setVisibility(v.VISIBLE);
+                }
+            });
         } catch (IOException e) {
             // TODO Handle the exception
         }

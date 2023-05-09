@@ -7,81 +7,137 @@
     android:backgroundTint="@color/white"
     tools:context=".FourthActivity">
 
-    <Button
-        android:id="@+id/button41"
+    <RelativeLayout
+        android:id="@+id/d41"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="370sp"
+                android:layout_height="283dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10sp" />
+
+            <TextView
+                android:id="@+id/classified4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10sp"
+                android:text="Disease:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/result4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/classified4"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="#C30000"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/confidencesText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/result4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10sp"
+                android:text="Percentage:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/confidence4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/confidencesText4"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/e4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/button41"
+                android:backgroundTint="@color/green"
+                android:text="View More Info"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <!--                <LinearLayout-->
+            <!--                    android:id="@+id/align1"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="149dp"-->
+            <!--                    android:orientation="vertical"-->
+            <!--                    android:visibility="visible" ></LinearLayout>-->
+
+            <Button
+                android:id="@+id/button41"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/button42"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/green"
+                android:text="Camera"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button42"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/green"
+                android:text="Upload Image"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/d42"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/button42"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/green"
-        android:text="Camera"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="21sp"
-        android:textStyle="bold" />
+        android:visibility="invisible"
+        tools:visibility="invisible">
 
-    <Button
-        android:id="@+id/button42"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/green"
-        android:text="Upload Image"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="21sp"
-        android:textStyle="bold" />
+        <WebView
+            android:id="@+id/webview4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
 
-    <ImageView
-        android:id="@+id/imageView41"
-        android:layout_width="370sp"
-        android:layout_height="370sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp" />
-
-    <TextView
-        android:id="@+id/classified41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView41"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp"
-        android:text="Disease:"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/result41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/classified41"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textColor="#C30000"
-        android:textSize="27sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/confidencesText41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/result41"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp"
-        android:text="Percentage:"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/confidence41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/confidencesText41"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textColor="#000"
-        android:textSize="25sp" />
+    </RelativeLayout>
 
 
 
