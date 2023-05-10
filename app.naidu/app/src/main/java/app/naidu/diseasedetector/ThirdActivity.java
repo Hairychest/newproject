@@ -121,11 +121,16 @@ public class ThirdActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-            String[] classes = { "Brown_Rust", "Fusarium_Head_Blight", "Healthy", "Loose_Smut", "Powdery_Mildew","Yellow_Rust"};
-            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
+            String[] classes = { "Brown Rust", "Fusarium Head Blight", "Healthy", "Loose Smut", "Powdery Mildew","Yellow Rust"};
+
             String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+            }
+            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
+            if (confidences[maxPos] < 0.75){
+                result.setText(String.format("%s: %.1f%%\n%s", classes[maxPos], maxConfidence * 100,"(Verify with more Images)"));
+
             }
 
             confidence.setText(s);

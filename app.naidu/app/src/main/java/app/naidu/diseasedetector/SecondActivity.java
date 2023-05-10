@@ -131,7 +131,6 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
             String[] classes = {"Brown Spot","Healthy","Invalid","Leaf Blast"};
-            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -140,6 +139,11 @@ public class SecondActivity extends AppCompatActivity {
                 s = "Upload Different Image";
                 result.setText(String.format("%s\n", classes[maxPos]));
                 confidencesText.setText("Error:");
+            }
+            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
+            if (confidences[maxPos] < 0.75){
+                result.setText(String.format("%s: %.1f%%\n%s", classes[maxPos], maxConfidence * 100,"(Verify with more Images)"));
+
             }
             confidence.setText(s);
 

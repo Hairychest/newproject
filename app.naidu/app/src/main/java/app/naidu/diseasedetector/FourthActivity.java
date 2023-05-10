@@ -120,7 +120,6 @@ public class FourthActivity extends AppCompatActivity {
                 }
             }
             String[] classes ={"Early Blight", "Healthy", "Invalid", "Late Blight"};
-            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
             String s = "";
             for(int i = 0; i < classes.length; i++){
                 s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
@@ -131,6 +130,11 @@ public class FourthActivity extends AppCompatActivity {
                 confidencesText.setText("Error:");
             }
             confidence.setText(s);
+            result.setText(String.format("%s: %.1f%%\n", classes[maxPos], maxConfidence * 100));
+            if (confidences[maxPos] < 0.75){
+                result.setText(String.format("%s: %.1f%%\n%s", classes[maxPos], maxConfidence * 100,"(Verify with more Images)"));
+
+            }
 
             // Releases model resources if no longer used.
             model.close();
